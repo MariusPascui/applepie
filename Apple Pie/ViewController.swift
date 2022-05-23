@@ -53,14 +53,19 @@ class ViewController: UIViewController {
     }
     
     func updateUI(){
-        var letters = [String]()
+        /*var letters = [String]()
         for letter in currentGame.formattedWord {
             letters.append(String(letter))
-        }
-        let wordWithSpacing = letters.joined(separator: " ")
+        } */
+        
+        let letters = currentGame.formattedWord
+        let mappedLetters = letters.map{ String($0) }
+        print(mappedLetters)
+        let wordWithSpacing = mappedLetters.joined(separator: " ")
         correctWordLabel.text = wordWithSpacing
         scoreLAbel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
         treeImageView.image = UIImage(named: "Tree \(currentGame.incorrectMovesRemaining)")
+        
     }
     
     func updateGameState() {
